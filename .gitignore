@@ -46,3 +46,10 @@ test_*.py
 build.bat
 build_executable.py
 packaging_requirements.txt
+
+# Unused/disabled files
+main_cantonese.py
+audio_manager_cantonese.py
+audio_manager_cantonese_fixed.py
+pyttsx_audio_manager.py
+cantonese_tts_solution.py
