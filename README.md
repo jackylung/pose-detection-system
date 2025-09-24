@@ -22,12 +22,6 @@
 - **動作控制**：每個動作可單獨開啟/關閉
 - **大尺寸顯示**：按鍵輸出的大字符顯示
 
-### ⌨️ 鍵盤模擬
-- **多種方式**：支援keyboard和pynput庫
-- **按鍵映射**：A-G對應不同動作
-- **防重複觸發**：內建冷卻機制
-- **即時反饋**：GUI顯示按鍵輸出狀態
-
 ## 動作-按鍵對應表
 
 | 動作 | 按鍵 | 說明 |
@@ -53,206 +47,32 @@
 - **Python**：3.8或更高版本（建議3.10+）
 - **攝影機驅動**：支援標準USB Video Class (UVC)
 
-### 相容性
-- ✅ Windows 11 筆記本電腦
-- ✅ Raspberry Pi 5 + 7寸螢幕
-- ✅ 一般USB攝影機
-- ✅ 藍牙/USB喇叭
+## 安裝與使用
 
-## 安裝指南
+### 方法一：使用打包版本（推薦用戶）
+1. 從Release頁面下載最新的打包版本
+2. 解壓縮後雙擊 `姿勢檢測系統.exe` 即可運行
 
-### 步驟1：下載專案
-```bash
-git clone <repository-url>
-cd pose_detection
-```
+### 方法二：源碼運行（推薦開發者）
+1. 確保已安裝Python 3.10或更高版本
+2. 克隆此倉庫：
+   ```bash
+   git clone https://github.com/jackylung/pose-detection-system.git
+   cd pose-detection-system
+   ```
+3. 安裝依賴：
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. 運行系統：
+   ```bash
+   python main.py
+   ```
 
-### 步驟2：建立虛擬環境（建議）
-```bash
-# Windows
-python -m venv pose-env
-pose-env\Scripts\activate
+## 開發與貢獻
 
-# Linux/Raspberry Pi
-python3 -m venv pose-env
-source pose-env/bin/activate
-```
+歡迎提交Issue和Pull Request來改善此項目。
 
-### 步驟3：安裝依賴
-```bash
-pip install -r requirements.txt
-```
+## 授權
 
-### 步驟4：系統檢查
-```bash
-python main.py --check
-```
-
-如果看到「系統檢查完成，所有組件正常」，表示安裝成功！
-
-## 使用方法
-
-### GUI模式（推薦）
-```bash
-python main.py
-```
-啟動圖形界面，適合一般使用者。
-
-### 控制台模式
-```bash
-python main.py --mode console
-```
-無GUI的命令行模式，適合無桌面環境。
-
-### 測試模式
-```bash
-python main.py --mode test
-```
-執行完整的系統測試。
-
-### 指定攝影機
-```bash
-python main.py --camera 1
-```
-使用索引為1的攝影機設備。
-
-## 操作說明
-
-### 初次使用
-1. **啟動系統**：執行主程式
-2. **校準姿勢**：按照語音提示站立標準姿勢
-3. **等待校準**：保持姿勢直到聽到「校準完成」
-4. **開始使用**：執行各種動作來觸發按鍵
-
-### GUI操作
-- **啟動/停止**：點擊系統控制按鈕
-- **校準**：點擊校準按鈕重新校準
-- **語音控制**：勾選/取消語音模式
-- **音量調節**：拖動音量滑桿
-- **動作設定**：勾選要檢測的動作
-- **播放說明**：點擊播放動作說明按鈕
-
-### 最佳使用技巧
-1. **光線充足**：確保攝影機前光線良好
-2. **背景簡潔**：避免複雜背景干擾檢測
-3. **距離適中**：站在攝影機前1-2公尺處
-4. **動作明確**：做動作時要明確、持續1秒以上
-5. **穿著對比**：穿著與背景對比度高的衣服
-
-## 故障排除
-
-### 常見問題
-
-**Q: 攝影機無法開啟**
-- 檢查攝影機是否被其他程式使用
-- 嘗試更換USB連接埠
-- 檢查攝影機驅動程式
-
-**Q: 姿勢檢測不準確**
-- 重新執行校準
-- 改善光線條件
-- 調整與攝影機的距離
-
-**Q: 語音無法播放**
-- 檢查音訊設備連接
-- 確認系統音量設定
-- 檢查網路連接（gTTS需要網路）
-
-**Q: 動作觸發太敏感/不敏感**
-- 調整檢測閾值（在messages.py中的DetectionThresholds類）
-- 重新校準姿勢
-- 確保動作足夠明顯
-
-### 日誌檢查
-系統會產生詳細日誌檔案 `pose_detection.log`，可以檢查具體錯誤信息。
-
-### 測試各模組
-```bash
-# 測試姿勢檢測
-python test_pose_detector.py
-
-# 測試音訊系統
-python test_audio_manager.py
-
-# 測試GUI界面
-python test_gui.py
-
-# 完整系統測試
-python test_integration.py
-```
-
-## 進階配置
-
-### 調整檢測參數
-編輯 `messages.py` 中的 `DetectionThresholds` 類：
-```python
-class DetectionThresholds:
-    HAND_RAISE_THRESHOLD = 0.15    # 手舉起閾值
-    FOOT_RAISE_THRESHOLD = 0.1     # 腳抬起閾值
-    TURN_ANGLE_THRESHOLD = 30      # 轉身角度閾值
-    NOD_THRESHOLD = 0.05           # 點頭閾值
-    ACTION_DURATION = 1.0          # 動作持續時間
-```
-
-### 自定義語音訊息
-編輯 `messages.py` 中的 `Messages` 類來自定義語音內容。
-
-### 修改按鍵對應
-在 `Messages.ACTION_KEYS` 中修改動作對應的按鍵。
-
-## 檔案結構
-
-```
-pose_detection/
-├── main.py                 # 主程式入口
-├── pose_detector.py        # 姿勢檢測核心
-├── gui_app.py             # GUI界面
-├── audio_manager.py       # 語音管理
-├── messages.py            # 訊息和配置
-├── utils.py               # 工具函數
-├── requirements.txt       # 依賴清單
-├── sounds/               # 語音檔案目錄
-├── test_*.py             # 測試檔案
-└── README.md             # 說明文件
-```
-
-## 技術規格
-
-### 依賴庫
-- **MediaPipe 0.10.21+**：姿勢檢測
-- **OpenCV 4.11.0+**：影像處理
-- **NumPy 1.26.4+**：數值計算
-- **Pygame 2.6.1+**：音訊播放
-- **gTTS 2.5.4+**：語音合成
-- **Pillow 11.1.0+**：圖像處理
-- **keyboard/pynput**：鍵盤模擬
-
-### 性能數據
-- **檢測延遲**：< 50ms
-- **幀率**：30 FPS
-- **記憶體使用**：< 500MB
-- **CPU使用率**：< 30%（一般情況）
-
-## 授權聲明
-
-本專案為開源軟體，使用時請遵循相關開源協議。
-
-## 技術支援
-
-如有技術問題或建議，請：
-1. 檢查本文件的故障排除章節
-2. 查看系統日誌檔案
-3. 執行系統測試診斷問題
-
-## 更新日誌
-
-### v1.0.0 (2024-09-23)
-- 完整的姿勢檢測系統
-- 7種動作辨識功能
-- 語音提示和GUI界面
-- 跨平台支援
-- 完整的測試套件
-
----
-
-**享受您的姿勢檢測體驗！** 🎉
+本項目採用MIT授權。
