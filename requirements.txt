@@ -1,0 +1,25 @@
+# Pose Detection Core Dependencies
+mediapipe>=0.10.13
+opencv-python>=4.8.0
+numpy>=1.24.0
+
+# GUI Interface
+# tkinter is built-in with Python
+
+# Audio Processing
+pygame>=2.5.0
+gTTS>=2.4.0
+
+# Keyboard Simulation (Windows & Linux)
+keyboard>=0.13.5
+pynput>=1.7.6
+
+# USB HID Support (Optional for advanced features)
+# pyusb>=1.2.1
+# hidapi>=0.14.0
+
+# Logging and Tools
+loguru>=0.7.0
+
+# System Compatibility
+Pillow>=10.0.0
