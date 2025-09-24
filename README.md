@@ -69,6 +69,21 @@
    python main.py
    ```
 
+## 專案結構
+
+本倉庫包含姿勢檢測系統的核心文件：
+- 主程序：[main.py](file://c:\Users\JackyCheung\qoder_projects\pose_detection\main.py)
+- 姿勢檢測模組：[pose_detector.py](file://c:\Users\JackyCheung\qoder_projects\pose_detection\pose_detector.py)
+- GUI界面：[gui_app.py](file://c:\Users\JackyCheung\qoder_projects\pose_detection\gui_app.py)
+- 語音管理：[audio_manager.py](file://c:\Users\JackyCheung\qoder_projects\pose_detection\audio_manager.py) 等
+- 配置文件：[messages.py](file://c:\Users\JackyCheung\qoder_projects\pose_detection\messages.py)
+- 工具函數：[utils.py](file://c:\Users\JackyCheung\qoder_projects\pose_detection\utils.py)
+- 音頻文件：`sounds/` 目錄
+- 依賴列表：[requirements.txt](file://c:\Users\JackyCheung\qoder_projects\pose_detection\requirements.txt)
+- 打包工具：[build.bat](file://c:\Users\JackyCheung\qoder_projects\pose_detection\build.bat) 和 [build_executable.py](file://c:\Users\JackyCheung\qoder_projects\pose_detection\build_executable.py)
+
+注意：為了保持倉庫的簡潔性，測試文件已被移除。如需完整的測試套件，請聯繫開發者。
+
 ## 開發與貢獻
 
 歡迎提交Issue和Pull Request來改善此項目。
