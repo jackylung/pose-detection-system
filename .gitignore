@@ -38,3 +38,11 @@ Desktop.ini
 
 # Git installer
 Git-Installer.exe
+
+# Test files - not needed for end users
+test_*.py
+
+# Build files - not needed for end users
+build.bat
+build_executable.py
+packaging_requirements.txt
