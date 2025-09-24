@@ -35,3 +35,6 @@ ehthumbs.db
 Icon?
 *.icon?
 Desktop.ini
+
+# Git installer
+Git-Installer.exe
